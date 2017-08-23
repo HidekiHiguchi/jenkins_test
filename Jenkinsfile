@@ -1,10 +1,10 @@
 Jenkinsfile (Declarative Pipeline)
 pipeline {
-    agent any
-    stages { 
-        stage('Example') {
+    agent { docker 'maven:3-alpine' } 
+    stages {
+        stage('Example Build') {
             steps {
-                echo 'Hello World'
+                sh 'mvn -B clean verify'
             }
         }
     }
